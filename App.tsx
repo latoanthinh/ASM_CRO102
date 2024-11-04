@@ -10,7 +10,7 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login_Screen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name='Home' component={Home_Screen} />

@@ -42,9 +42,9 @@ const LoginScreen = () => {
                 <Text style={styles.text_wellcome}>Chào mừng bạn</Text>
                 <Text style={styles.text_Login}>Đăng nhập tài khoản</Text>
                 {/* Form Đăng Nhập */}
-                <View style={styles.formContainer}>
+                <View style={styles.formContainer }>
                     <TextInput
-                        style={styles.input}
+                        style={[styles.input, error ? styles.input_error : null]}
                         placeholder="Email or phone number"
                         value={email}
                         onChangeText={setEmail}
