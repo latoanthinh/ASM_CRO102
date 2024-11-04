@@ -7,11 +7,10 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         position: 'absolute',
-        bottom: 450,
+        bottom: 500,
         justifyContent: 'center',
         width: '100%',
         height: 350,
-        justifyContent: 'center',
         alignItems: 'center',
     },
     image: {
@@ -120,7 +119,19 @@ const styles = StyleSheet.create({
         width: 18,
         height: 18,
         marginRight: 5
-    }
+    },
+    error_message: {
+        color: '#ff0000',
+        fontSize: 12,
+        marginBottom: 10
+    },
+    input_error: {
+        borderColor: 'red',
+        borderWidth: 1
+    },
+    checkbox_checked: {
+        tintColor: '#4CAF50',
+    },
 });
 
 export default styles;

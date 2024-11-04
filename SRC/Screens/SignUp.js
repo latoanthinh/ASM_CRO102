@@ -27,7 +27,9 @@ const SignUpScreen = () => {
             navigation.navigate('Login');
         }
     }
-
+    const goToLogin = () => {
+        navigation.navigate('Login')
+    }
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -88,7 +90,7 @@ const SignUpScreen = () => {
                     {/* đã có tài khoản */}
                     <View style={styles.text_horizontal}>
                         <Text>Bạn đã có tài khoản?</Text>
-                        <Pressable>
+                        <Pressable onPress={goToLogin}>
                             <Text style={styles.forgotPassword}> Đăng nhập</Text>
                         </Pressable>
                     </View>
