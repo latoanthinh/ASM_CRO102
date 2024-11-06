@@ -20,7 +20,7 @@ const LoginScreen = () => {
         } else {
             setError('');
             console.log('Login successful');
-            navigation.navigate('SignUp');
+            navigation.navigate('Home');
         }
     };
 
