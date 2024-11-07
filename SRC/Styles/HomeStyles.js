@@ -59,11 +59,10 @@ const styles = StyleSheet.create({
         color: '#221f1f',
     },
     flatlist_styles: {
-        marginLeft: 10,
         padding: 10,
         backgroundColor: '#ffffff',
         borderRadius: 10,
-        height: '100%'
+        height: 'auto',
     },
     product_name: {
         fontSize: 14,
@@ -79,6 +78,10 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         marginTop: 5,
         color: '#007537'
+    },
+    product_image: {
+        width: 155,
+        height: 134
     }
 })
 export default styles;

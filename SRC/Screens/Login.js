@@ -112,9 +112,9 @@ const LoginScreen = () => {
                     {/* tao tai khoan */}
                     <View style={styles.text_horizontal}>
                         <Text>Bạn không có tài khoản?</Text>
-                        <Pressable onPress={goToSignUp}>
+                        <TouchableOpacity onPress={goToSignUp}>
                             <Text style={styles.forgotPassword}> Tạo tài khoản</Text>
-                        </Pressable>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
