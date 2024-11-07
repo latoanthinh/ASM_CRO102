@@ -4,22 +4,41 @@ import { useNavigation } from '@react-navigation/native';
 import styles from '../Styles/LoginStyles';
 
 const LoginScreen = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [email, setEmail] = useState('thinh@gmail.com');
+    const [password, setPassword] = useState('123456');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
     const [isChecked, setIsChecked] = useState(false);
     const navigation = useNavigation();
 
     const onClick_Login = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let hasError = false;
+
         if (email.trim() === '') {
-            setError('Email không được để trống!');
-            return;
-        } else if (password.trim() === '') {
-            setError('Password không được để trống!');
-            return;
+            setErrorEmail('Email không được để trống!');
+            hasError = true;
+        } else if (!emailRegex.test(email)) {
+            setErrorEmail('Email không hợp lệ!');
+            hasError = true;
         } else {
-            setError('');
+            setErrorEmail('');
+        }
+
+        if (password.trim() === '') {
+            setErrorPassword('Password không được để trống!');
+            hasError = true;
+        } else if (password.length < 6) {
+            setErrorPassword('Password phải có ít nhất 6 ký tự!');
+            hasError = true;
+        } else {
+            setErrorPassword('');
+        }
+
+        if (!hasError) {
             console.log('Login successful');
+            setEmail('');
+            setPassword('');
             navigation.navigate('Home');
         }
     };
@@ -35,6 +54,7 @@ const LoginScreen = () => {
     return (
         <ScrollView>
             <View style={styles.container}>
+                <Image style={styles.arrow_back} source={require('../assets/Icons/arrow_left.png')} />
                 {/* Background */}
                 <View style={styles.imageContainer}>
                     <Image source={require('../assets/Images/background.png')} style={styles.image} />
@@ -42,22 +62,23 @@ const LoginScreen = () => {
                 <Text style={styles.text_wellcome}>Chào mừng bạn</Text>
                 <Text style={styles.text_Login}>Đăng nhập tài khoản</Text>
                 {/* Form Đăng Nhập */}
-                <View style={styles.formContainer }>
+                <View style={styles.formContainer}>
                     <TextInput
-                        style={[styles.input, error ? styles.input_error : null]}
+                        style={[styles.input, errorEmail ? styles.input_error : null]}
                         placeholder="Email or phone number"
                         value={email}
                         onChangeText={setEmail}
                     />
+                    {errorEmail ? <Text style={styles.error_message}>{errorEmail}</Text> : null}
 
                     <TextInput
-                        style={[styles.input, error ? styles.input_error : null]}
+                        style={[styles.input, errorPassword ? styles.input_error : null]}
                         placeholder="Password"
                         secureTextEntry
                         value={password}
                         onChangeText={setPassword}
                     />
-                    {error ? <Text style={styles.error_message}>{error}</Text> : null}
+                    {errorPassword ? <Text style={styles.error_message}>{errorPassword}</Text> : null}
 
                     {/* Ghi Nhớ Tài khoản */}
                     <View style={styles.text_horizontal_remember}>

@@ -132,6 +132,16 @@ const styles = StyleSheet.create({
     checkbox_checked: {
         tintColor: '#4CAF50',
     },
+    arrow_back: {
+        width: 32,
+        height: 32,
+        position: 'absolute',
+        zIndex: 1,
+        backgroundColor: 'rgba(248, 238, 192, 0.5)',
+        borderRadius: 50,
+        top: 20,
+        left: 20
+    }
 });
 
 export default styles;

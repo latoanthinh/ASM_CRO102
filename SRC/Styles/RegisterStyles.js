@@ -98,6 +98,16 @@ const styles = StyleSheet.create({
         color: '#007b00',
         marginLeft: 5,
     },
+    arrow_back: {
+        width: 32,
+        height: 32,
+        position: 'absolute',
+        zIndex: 1,
+        backgroundColor: 'rgba(248, 238, 192, 0.5)',
+        borderRadius: 50,
+        top: 20,
+        left: 20
+    }
 });
 
 export default styles;

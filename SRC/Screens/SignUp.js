@@ -33,6 +33,9 @@ const SignUpScreen = () => {
     return (
         <ScrollView>
             <View style={styles.container}>
+                <Pressable style={{ zIndex: 1 }} onPress={goToLogin}>
+                    <Image style={styles.arrow_back} source={require('../assets/Icons/arrow_left.png')} />
+                </Pressable>
                 {/* Background */}
                 <View style={styles.imageContainer}>
                     <Image source={require('../assets/Images/background.png')} style={styles.image} />

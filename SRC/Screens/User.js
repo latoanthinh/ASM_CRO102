@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
-import styles from '../Styles/UserScreenStyles'
+import { useNavigation } from '@react-navigation/native';
+import { launchImageLibrary } from 'react-native-image-picker';
+import styles from '../Styles/UserScreenStyles';
 
 const User = () => {
+    const navigation = useNavigation();
+    const [profilePic, setProfilePic] = useState(require('../assets/Images/avt.jpg'));
+
+    const Logout = () => {
+        navigation.navigate('Login');
+    };
+
+    const chooseImage = () => {
+        const options = {
+            mediaType: 'photo',
+            includeBase64: false,
+        };
+
+        launchImageLibrary(options, (response) => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else {
+                const source = { uri: response.assets[0].uri };
+                setProfilePic(source);
+            }
+        });
+    };
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.tilte}>
                 <Text style={styles.text_tilte}>PROFILE</Text>
             </View>
             <View style={styles.header}>
-                <Image source={require('../assets/Images/avt.jpg')} style={styles.profilePic} />
+                <TouchableOpacity onPress={chooseImage}>
+                    <Image source={profilePic} style={styles.profilePic} />
+                </TouchableOpacity>
                 <View style={styles.userInfo}>
                     <Text style={styles.name}>La Toàn Thịnh</Text>
                     <Text style={styles.email}>toanthinh@gmail.com</Text>
@@ -40,13 +69,12 @@ const User = () => {
                 <TouchableOpacity style={styles.menuItem}>
                     <Text style={styles.menuItemText}>Chính sách quyền riêng tư</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem}>
+                <TouchableOpacity onPress={Logout} style={styles.menuItem}>
                     <Text style={[styles.menuItemText, styles.logoutText]}>Đăng xuất</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
     );
 };
-
 
 export default User;

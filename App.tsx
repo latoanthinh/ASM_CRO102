@@ -24,7 +24,7 @@ function App() {
       <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login_Screen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Home" component={TabBar} initialParams={{ screens: screens }} />
+        <Stack.Screen name="Home" component={TabBar} initialParams={{ screens }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
