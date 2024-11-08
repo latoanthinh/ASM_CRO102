@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, Image, FlatList } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, Pressable } from 'react-native';
 import styles from '../Styles/HomeStyles';
+import { useNavigation } from '@react-navigation/native';
 
 const Home_Screen = () => {
+    const navigation = useNavigation();
     const Product_data = [
         { id: 1, name: 'Spider Plant', image: require('../assets/Images/product_1.png'), uudiem: 'Ưa bóng', price: 250000 },
         { id: 2, name: 'Cây Kiểng', image: require('../assets/Images/product_2.png'), uudiem: 'Ưa nước', price: 350000 },
@@ -12,13 +14,21 @@ const Home_Screen = () => {
         { id: 6, name: 'Hoa Ly', image: require('../assets/Images/product_2.png'), uudiem: 'Ưa nước', price: 700000 },
     ];
 
+    const goToDetail = () => {
+        navigation.navigate('Detail');
+    }
+    const goToCategory = () => {
+        navigation.navigate('Category');
+    }
     const Render_Flalist_Product = ({ item }) => (
-        <View style={styles.flatlist_container}>
-            <Image source={item.image} style={styles.product_image} />
-            <Text style={styles.product_name}>{item.name}</Text>
-            <Text style={styles.product_uudiem}>{item.uudiem}</Text>
-            <Text style={styles.product_price}>{item.price.toLocaleString()} VND</Text>
-        </View>
+        <TouchableOpacity onPress={goToDetail}>
+            <View style={styles.flatlist_container}>
+                <Image source={item.image} style={styles.product_image} />
+                <Text style={styles.product_name}>{item.name}</Text>
+                <Text style={styles.product_uudiem}>{item.uudiem}</Text>
+                <Text style={styles.product_price}>{item.price.toLocaleString()} VND</Text>
+            </View>
+        </TouchableOpacity>
     );
 
     return (
@@ -31,7 +41,9 @@ const Home_Screen = () => {
             </View>
             <Image style={styles.bg} source={require('../assets/Images/home_bg.png')} />
             <View style={styles.container_green_text}>
-                <Text style={styles.text_green}>Xem hàng mới về</Text>
+                <Pressable onPress={goToCategory}>
+                    <Text style={styles.text_green}>Xem hàng mới về</Text>
+                </Pressable>
                 <Image source={require('../assets/Icons/arrow_green.png')} />
             </View>
             <Text style={styles.text_1}>Cây trồng</Text>

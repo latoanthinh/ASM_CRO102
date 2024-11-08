@@ -27,7 +27,7 @@ const TabBarIcon = ({ route, focused }) => {
   return (
     <View style={styles.iconContainer}>
       <Image source={icon} style={[styles.icon, focused && styles.focusedIcon]} />
-      {focused && <View style={styles.dot} />} {/* Dấu chấm khi tab được chọn */}
+      {focused && <View style={styles.dot} />}
     </View>
   );
 };

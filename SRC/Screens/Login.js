@@ -26,17 +26,17 @@ const LoginScreen = () => {
         }
 
         if (password.trim() === '') {
-            setErrorPassword('Password không được để trống!');
+            setErrorPassword('Mật khẩu không được để trống!');
             hasError = true;
         } else if (password.length < 6) {
-            setErrorPassword('Password phải có ít nhất 6 ký tự!');
+            setErrorPassword('Mật khẩu phải có ít nhất 6 ký tự!');
             hasError = true;
         } else {
             setErrorPassword('');
         }
 
         if (!hasError) {
-            console.log('Login successful');
+            console.log('Đăng nhập thành công');
             setEmail('');
             setPassword('');
             navigation.navigate('Home');
@@ -65,7 +65,7 @@ const LoginScreen = () => {
                 <View style={styles.formContainer}>
                     <TextInput
                         style={[styles.input, errorEmail ? styles.input_error : null]}
-                        placeholder="Email or phone number"
+                        placeholder="Email hoặc số điện thoại"
                         value={email}
                         onChangeText={setEmail}
                     />
@@ -73,7 +73,7 @@ const LoginScreen = () => {
 
                     <TextInput
                         style={[styles.input, errorPassword ? styles.input_error : null]}
-                        placeholder="Password"
+                        placeholder="Mật khẩu"
                         secureTextEntry
                         value={password}
                         onChangeText={setPassword}
@@ -89,11 +89,11 @@ const LoginScreen = () => {
                             />
                             <Text style={styles.text_remember}>Nhớ tài khoản</Text>
                         </Pressable>
-                        <Text style={styles.forgotPassword}>Forgot Password?</Text>
+                        <Text style={styles.forgotPassword}>Quên mật khẩu?</Text>
                     </View>
-                    <TouchableOpacity style={styles.button} onPress={onClick_Login}>
+                    <Pressable style={styles.button} onPress={onClick_Login}>
                         <Text style={styles.buttonText}>Đăng Nhập</Text>
-                    </TouchableOpacity>
+                    </Pressable>
                     {/* line */}
                     <View style={styles.container_horizontal}>
                         <Image style={styles.line_margin} source={require('../assets/Icons/Line.png')} />
@@ -113,7 +113,7 @@ const LoginScreen = () => {
                     <View style={styles.text_horizontal}>
                         <Text>Bạn không có tài khoản?</Text>
                         <TouchableOpacity onPress={goToSignUp}>
-                            <Text style={styles.forgotPassword}> Tạo tài khoản</Text>
+                            <Text style={styles.forgotPassword}>Tạo tài khoản</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
