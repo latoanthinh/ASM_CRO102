@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     product_image: {
         width: 155,
         height: 134
-    }
+    },
+
 })
 export default styles;

@@ -8,6 +8,8 @@ import Search_Screen from './SRC/Screens/Search';
 import Notification_Screen from './SRC/Screens/Notification';
 import User from './SRC/Screens/User';
 import TabBar from './SRC/Components/TabBar';
+import Category from './SRC/Screens/Category';
+import Detail_Screen from './SRC/Screens/Detail';
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -21,10 +23,12 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Detail" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login_Screen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Home" component={TabBar} initialParams={{ screens }} />
+        <Stack.Screen name="Category" component={Category} />
+        <Stack.Screen name="Detail" component={Detail_Screen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
