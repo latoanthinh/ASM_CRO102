@@ -29,6 +29,8 @@ function App() {
         <Stack.Screen name="Home" component={TabBar} initialParams={{ screens }} />
         <Stack.Screen name="Category" component={Category} />
         <Stack.Screen name="Detail" component={Detail_Screen} />
+        <Stack.Screen name="Search" component={Search_Screen} />
+        <Stack.Screen name="Bell" component={Notification_Screen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

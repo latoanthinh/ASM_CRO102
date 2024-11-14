@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styles from "../Styles/CategoryStyles"
 import { FlatList, Image, Text, View, TouchableOpacity, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Category = () => {
+    const navigation = useNavigation();
     const [focusedCategory, setFocusedCategory] = useState(0);
 
     const Product_data = [
@@ -55,11 +57,16 @@ const Category = () => {
             </Pressable>
         );
     };
+    const goBack = () => {
+        navigation.navigate('Home');
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.container_horizontal}>
-                <Image style={styles.image_arrow} source={require('../assets/Icons/arrow_left.png')} />
+                <Pressable onPress={goBack}>
+                    <Image style={styles.image_arrow} source={require('../assets/Icons/arrow_left.png')} />
+                </Pressable>
                 <Text style={styles.tiltle}>CÂY TRỒNG</Text>
                 <Image style={styles.cart_icon} source={require('../assets/Icons/shopping-cart.png')} />
             </View>

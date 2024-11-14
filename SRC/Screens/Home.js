@@ -15,9 +15,11 @@ const Home_Screen = () => {
     ];
 
     const goToDetail = () => {
+        console.log('>>>>>>>>>>>>>>>> Go To Detail')
         navigation.navigate('Detail');
     }
     const goToCategory = () => {
+        console.log('>>>>>>>>>>>>>>>>>>> Go To Category')
         navigation.navigate('Category');
     }
     const Render_Flalist_Product = ({ item }) => (
