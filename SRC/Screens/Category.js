@@ -29,7 +29,7 @@ const Category = () => {
         { id: 6, tiltle: 'Xem Thêm' },
     ];
 
-    // Render Flatlist UI
+    // Render Flatlist 
     const Product_render = ({ item }) => {
         return (
             <View style={styles.flatlist_container_product}>
