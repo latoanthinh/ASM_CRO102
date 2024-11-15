@@ -1,69 +1,84 @@
-import React from "react";
-import { FlatList, Image, Text, View, TouchableOpacity, Pressable, ScrollView } from "react-native";
-import styles from "../Styles/DetailStyles";
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import styles from '../Styles/DetailStyles';
 
-const Detail_Screen = () => {
+function Detail() {
+    const [value, setValue] = useState(1);
+    const [totalPrice, setTotalPrice] = useState(250000);
+
+
+
     return (
         <ScrollView>
             <View style={styles.container}>
-                <View style={styles.container_horizontal}>
-                    <Image style={styles.image_arrow} source={require('../assets/Icons/arrow_left.png')} />
-                    <Text style={styles.title}>Spider Plant</Text>
-                    <Image style={styles.cart_icon} source={require('../assets/Icons/shopping-cart.png')} />
+                <View style={styles.detail_header}>
+                    <Image source={require('../assets/Icons/arrow_left.png')} style={styles.detail_header_back} />
+                    <Text style={styles.detail_header_text}>Spider plant</Text>
+                    <Image source={require('../assets/Icons/shopping-cart.png')} style={styles.shopping_cart} />
                 </View>
-                <View>
-                    <Image style={styles.image_detail} source={require('../assets/Images/product_1.png')} />
-                    <Image style={styles.arrow_left} source={require('../assets/Icons/arrow_left.png')} />
-                    <Image style={styles.arrow_right} source={require('../assets/Icons/arrow_left.png')} />
-                </View>
-                <View style={styles.product_info}>
-                    <View style={styles.info_item}>
-                        <Text style={styles.info_text}>Ưa Bóng</Text>
+
+                <View style={styles.detail_content}>
+                    <View style={styles.detail_content_image_container}>
+                        <Image source={require('../assets/Images/product_1.png')} style={styles.detail_content_image} />
                     </View>
-                    <View style={styles.info_item}>
-                        <Text style={styles.info_text}>Cây Trồng</Text>
-                    </View>
-                </View>
-                <Text style={styles.price}>250.000đ</Text>
-                {/* Chi tiết sản phẩm */}
-                <View style={styles.product_details}>
-                    <Text style={styles.details_title}>Chi tiết sản phẩm</Text>
-                    <View style={styles.details_item}>
-                        <Text style={styles.details_label}>Kích Cỡ</Text>
-                        <Text style={styles.details_value}>Nhỏ</Text>
-                    </View>
-                    <View style={styles.details_item}>
-                        <Text style={styles.details_label}>Xuất xứ</Text>
-                        <Text style={styles.details_value}>Châu phi</Text>
-                    </View>
-                    <View style={styles.details_item}>
-                        <Text style={styles.details_label}>Tình trạng</Text>
-                        <Text style={styles.details_value}>còn 156 sp</Text>
-                    </View>
-                </View>
-                {/* View thanh toán */}
-                <View style={styles.payment_container}>
-                    {/* số lượng sản phẩm */}
-                    <View style={styles.quantity_and_total}>
-                        <View style={styles.quantity_container}>
-                            <Text style={styles.quantity_label}>Số lượng sản phẩm</Text>
-                            <Pressable style={styles.button_minus}>
-                                <Text style={styles.button_text}>-</Text>
-                            </Pressable>
-                            <Text style={styles.quantity_value}>0</Text>
-                            <Pressable style={styles.button_plus}>
-                                <Text style={styles.button_text}>+</Text>
-                            </Pressable>
+
+                    <View style={styles.detail_content_text_container}>
+                        <View style={styles.detail_content_text_container_text}>
+                            <Text style={styles.detail_content_text_container_text_title}>Cây trồng</Text>
+                            <Text style={styles.detail_content_text_container_text_title}>ưa bóng</Text>
                         </View>
-                        <Text style={styles.total_price}>Tạm tính: 0đ</Text>
+                        <View style={styles.detail_content_text_container_text_price_container}>
+                            <Text style={styles.detail_content_text_container_text_price}>250.000đ</Text>
+                            <View style={styles.detail_chitiettxt_container}>
+                                <Text style={styles.detail_chitiettxt}>Chi tiết sản phẩm</Text>
+                                <Image source={require('../assets/Icons/Line.png')} style={styles.detail_line} />
+                                <View style={styles.detail_chitiettxtcon_container}>
+                                    <Text style={styles.detail_chitiettxtcon}>Kích cỡ</Text>
+                                    <Text style={styles.detail_chitiettxtcon}>Nhỏ</Text>
+                                </View>
+                                <Image source={require('../assets/Icons/Line.png')} style={styles.detail_line2} />
+                                <View style={styles.detail_chitiettxtcon_container}>
+                                    <Text style={styles.detail_chitiettxtcon}>Xuất xứ</Text>
+                                    <Text style={styles.detail_chitiettxtcon}>Châu Phi</Text>
+                                </View>
+                                <Image source={require('../assets/Icons/Line.png')} style={styles.detail_line2} />
+                                <View style={styles.detail_chitiettxtcon_container}>
+                                    <Text style={styles.detail_chitiettxtcon}>On Stock</Text>
+                                    <Text style={styles.detail_chitiettxtcongreen}>còn 156sp</Text>
+                                </View>
+                                <Image source={require('../assets/Icons/Line.png')} style={styles.detail_line2} />
+                            </View>
+                        </View>
                     </View>
-                    {/* button Chọn Mua */}
-                    <Pressable style={styles.button_buy}>
-                        <Text style={styles.button_text}>Chọn Mua</Text>
-                    </Pressable>
+
+                    <View style={styles.detail_chonmua_container}>
+                        <View style={styles.detail_chonmua_container_text}>
+                            <Text style={styles.detail_chonmua_text}>Đã chọn 0 sản phẩm</Text>
+                            <Text style={styles.detail_tamtinh_text}>Tạm tính</Text>
+                        </View>
+
+                        <View style={styles.detail_big_container}>
+                            <View style={styles.detail_soluong_container}>
+                                <View style={styles.detail_soluong}>
+                                    <TouchableOpacity>
+                                        <Text style={styles.buttonText}>-</Text>
+                                    </TouchableOpacity>
+                                    <Text style={styles.value}>{value}</Text>
+                                    <TouchableOpacity>
+                                        <Text style={styles.buttonText}>+</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            <Text style={styles.detail_giatamtinh}>{totalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</Text>
+                        </View>
+                    </View>
+                    <TouchableOpacity style={styles.detail_button}>
+                        <Text style={styles.detail_button_text}>CHỌN MUA</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </ScrollView>
     );
 }
-export default Detail_Screen;
+
+export default Detail;

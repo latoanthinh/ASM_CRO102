@@ -1,134 +1,179 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        padding: 20,
-    },
-    container_horizontal: {
+const DetailStyles = StyleSheet.create({
+    detail_header: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 20,
+        marginHorizontal: 20,
+        marginTop: 50,
     },
-    image_arrow: {
-        width: 24,
-        height: 24,
+    detail_header_back: {
+        width: 30,
+        height: 30,
     },
-    title: {
-        fontSize: 20,
+    detail_header_text: {
+        fontSize: 24,
         fontWeight: 'bold',
     },
-    cart_icon: {
-        width: 24,
-        height: 24,
+    shopping_cart: {
+        width: 30,
+        height: 30,
     },
-    image_detail: {
-        width: '100%',
+    detail_content: {
+        // marginHorizontal: 20,
+        marginTop: 20,
+    },
+    detail_content_image_container: {
+        width: 393,
         height: 300,
-        resizeMode: 'contain',
+        backgroundColor: '#F5F5F5',
     },
-    arrow_left: {
-        position: 'absolute',
-        top: '50%',
-        left: 20,
-        transform: [{ translateY: -12 }],
-        width: 24,
-        height: 24,
+    detail_content_image: {
+        width: '100%',
+        height: '100%',
     },
-    arrow_right: {
-        position: 'absolute',
-        top: '50%',
-        right: 20,
-        transform: [{ translateY: -12 }],
-        width: 24,
-        height: 24,
-    },
-    product_info: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginVertical: 20,
-    },
-    info_item: {
-        backgroundColor: '#f2f2f2',
-        padding: 10,
-        borderRadius: 4,
-    },
-    info_text: {
-        fontSize: 16,
-        color: '#333',
-    },
-    price: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-    product_details: {
-        marginVertical: 20,
-    },
-    details_title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    details_item: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+
+    detail_content_text_container: {
         marginVertical: 8,
     },
-    details_label: {
-        fontSize: 16,
-        color: '#666',
-    },
-    details_value: {
-        fontSize: 16,
-        color: '#333',
-    },
-    payment_container: {
-        marginVertical: 20,
-    },
-    quantity_and_total: {
+    detail_content_text_container_text: {
         flexDirection: 'row',
-        alignItems: 'center',
+        flex: 1,
+        marginHorizontal: 16,
+    },
+    detail_content_text_container_text_title: {
+        fontSize: 16,
+        width: 'auto',
+        height: 30,
+        color: '#fff',
+        backgroundColor: '#009245',
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        borderRadius: 10,
+        alignContent: 'center',
+        marginLeft: 10
+    },
+    detail_content_text_container_text_price_container: {
+        marginHorizontal: 16,
+        marginTop: 30,
+    },
+    detail_content_text_container_text_price: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#007537',
+    },
+    detail_chitiettxt_container: {
+        marginTop: 10,
+    },
+    detail_chitiettxt: {
+        fontSize: 19,
+        color: '#007537',
+        fontWeight: 'bold',
+    },
+    detail_line: {
+        width: '100%',
+        marginTop: 10,
+        height: 2,
+        backgroundColor: '#333',
+    },
+    detail_line2: {
+        width: '100%',
+        marginTop: 10,
+        height: 1,
+        backgroundColor: '#333',
+    },
+    detail_chitiettxtcon: {
+        marginTop: 10,
+        fontSize: 16,
+        color: '#3A3A3A',
+        // fontWeight: 'bold',
+    },
+    detail_chitiettxtcongreen: {
+        marginTop: 10,
+        fontSize: 16,
+        color: '#009245',
+        // fontWeight: 'bold',
+    },
+    detail_chitiettxtcon_container: {
+        flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 10,
+        marginHorizontal: 16,
     },
-    quantity_container: {
+    detail_chonmua_container: {
+        marginTop: 10,
+    },
+    detail_chonmua_container_text: {
         flexDirection: 'row',
-        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginHorizontal: 16,
     },
-    quantity_label: {
+    detail_chonmua_text: {
+
         fontSize: 16,
-        marginRight: 10,
+        color: '#000000',
     },
-    quantity_value: {
+    detail_tamtinh_text: {
         fontSize: 16,
-        marginHorizontal: 10,
+        color: '#000000',
     },
-    button_minus: {
-        padding: 8,
-        backgroundColor: '#f2f2f2',
-        borderRadius: 4,
+    detail_soluong_container: {
+        // flexDirection: 'row',
+        marginTop: 10,
+        width: '40%',
     },
-    button_plus: {
-        padding: 8,
-        backgroundColor: '#f2f2f2',
-        borderRadius: 4,
+    detail_soluong: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: 16,
     },
-    button_text: {
-        fontSize: 16,
+    button: {
+        // backgroundColor: '#007aff',
+        paddingHorizontal: 7,
+        paddingVertical: 2,
+        borderRadius: 5,
+        borderWidth: 1,
     },
-    total_price: {
-        fontSize: 16,
+    buttonText: {
+        color: 'black',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
-    button_buy: {
-        backgroundColor: '#007bff',
-        paddingVertical: 12,
-        paddingHorizontal: 20,
-        borderRadius: 4,
-        alignItems: 'center',
+    value: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginHorizontal: 20,
+    },
+    detail_big_container: {
+        paddingTop: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    detail_giatamtinh: {
+        marginTop: 10,
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginHorizontal: 16,
+    },
+    detail_button: {
+        width: '92%',
+        height: 50,
+        alignSelf: 'center',
+        marginTop: 20,
+        backgroundColor: '#007537',
+        paddingHorizontal: 15,
+        paddingVertical: 5,
+        borderRadius: 5,
+        marginBottom: 10
+    },
+    detail_button_text: {
+        fontSize: 18,
+        textAlign: 'center',
+        marginTop: 10,
+        fontWeight: 'bold',
+        color: 'white',
+
     },
 });
 
-export default styles;
+export default DetailStyles;
