@@ -49,7 +49,9 @@ const styles = StyleSheet.create({
     flatlist_container: {
         marginHorizontal: 10,
         backgroundColor: '#fff',
-        paddingBottom: 10
+        paddingBottom: 10,
+        marginBottom: 10,
+        borderRadius: 10
     },
     text_1: {
         marginTop: 80,
@@ -81,7 +83,9 @@ const styles = StyleSheet.create({
     },
     product_image: {
         width: 155,
-        height: 134
+        height: 134,
+        backgroundColor: '#f6f6f6',
+        borderRadius: 16
     },
 
 })

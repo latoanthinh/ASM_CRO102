@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         position: 'absolute',
-        bottom: 500,
+        bottom: 350,
         justifyContent: 'center',
         width: '100%',
         height: 350,

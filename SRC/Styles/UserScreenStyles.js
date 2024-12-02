@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const UserScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#f8f9fa',
     },
     header: {
         flexDirection: 'row',
@@ -13,64 +13,77 @@ const UserScreenStyles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
-        shadowRadius: 2,
-        elevation: 1,
+        shadowRadius: 4,
+        elevation: 2,
     },
     profilePic: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
+        width: 70,
+        height: 70,
+        borderRadius: 35,
         marginRight: 16,
     },
     userInfo: {
         flex: 1,
     },
     name: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 4,
+        color: '#212529',
     },
     email: {
-        fontSize: 14,
-        color: '#666',
+        fontSize: 16,
+        color: '#6c757d',
     },
     section: {
         backgroundColor: '#fff',
         padding: 16,
+        marginVertical: 8,
+        borderRadius: 8,
+        elevation: 1,
     },
     sectionTitle: {
-        fontSize: 16,
-        fontWeight: '400',
+        fontSize: 18,
+        fontWeight: '600',
         marginBottom: 10,
-        color: '#7F7F7F',
-        width: '90%',
-        height: 42,
+        color: '#495057',
         borderBottomWidth: 1,
-        borderColor: '#ABABAB'
+        borderColor: '#dee2e6',
+        paddingBottom: 4,
     },
     menuItem: {
         paddingVertical: 12,
     },
     menuItemText: {
         fontSize: 16,
-        color: '#333',
+        color: '#343a40',
     },
-
     logoutText: {
-        color: '#FF0000',
+        color: '#dc3545',
         fontSize: 16,
         fontWeight: '500',
     },
-    tilte: {
+    title: {
         width: '100%',
         height: 55,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#ffffff'
     },
-    text_tilte: {
-        fontSize: 16,
+    text_title: {
+        fontSize: 18,
         textAlign: 'center',
-        fontWeight: '500'
+        fontWeight: '600',
+        color: 'black',
+    },
+    modalView: {
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        width: '90%',
+        height: 200,
+        alignSelf: 'center',
+        borderRadius: 10,
+        padding: 20
     }
 });
 

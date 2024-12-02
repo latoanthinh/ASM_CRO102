@@ -1,42 +1,87 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, Image, ScrollView, Pressable, ToastAndroid } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, Image, ScrollView, Pressable, ToastAndroid, ActivityIndicator } from 'react-native';
 import styles from '../Styles/RegisterStyles';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../store/userSlice';
 
 const SignUpScreen = () => {
-    const [fullName, setFullName] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false); 
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+    const { error } = useSelector((state) => state.user);
 
-    const onClick_SignUp = () => {
-        if (fullName == '' || email == '' || password == '' || phone == '') {
+    const validateInput = () => {
+        if (!name || !email || !password || !confirmPassword) {
             ToastAndroid.showWithGravity(
                 'Vui lòng điền đầy đủ thông tin',
                 ToastAndroid.SHORT,
                 ToastAndroid.BOTTOM
-            )
-        } else {
+            );
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            ToastAndroid.showWithGravity(
+                'Mật khẩu không khớp',
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM
+            );
+            return false;
+        }
+
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+            ToastAndroid.showWithGravity(
+                'Địa chỉ email không hợp lệ',
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM
+            );
+            return false;
+        }
+
+        return true;
+    };
+
+    const onClick_SignUp = async () => {
+        if (!validateInput()) return;
+
+        setLoading(true);
+        try {
+            await dispatch(registerUser({ name, email, password, confirm_password: password })).unwrap();
             ToastAndroid.showWithGravity(
                 'Đăng ký thành công',
                 ToastAndroid.SHORT,
                 ToastAndroid.BOTTOM
-            )
-            console.log('Sign Up: <<<<<<<<<<<<<<<<<<<', { fullName, email, phone, password });
+            );
             navigation.navigate('Login');
+        } catch (err) {
+            ToastAndroid.showWithGravity(
+                error ,
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM
+            );
+        } finally {
+            setLoading(false);
         }
-    }
+    };
+
     const goToLogin = () => {
-        navigation.navigate('Login')
-    }
+        navigation.navigate('Login');
+    };
+
     return (
         <ScrollView>
             <View style={styles.container}>
                 <Pressable style={{ zIndex: 1 }} onPress={goToLogin}>
                     <Image style={styles.arrow_back} source={require('../assets/Icons/arrow_left.png')} />
                 </Pressable>
-                {/* Background */}
                 <View style={styles.imageContainer}>
                     <Image source={require('../assets/Images/background.png')} style={styles.image} />
                 </View>
@@ -46,9 +91,9 @@ const SignUpScreen = () => {
                 <View style={styles.formContainer}>
                     <TextInput
                         style={styles.input}
-                        placeholder="Họ tên"
-                        value={fullName}
-                        onChangeText={setFullName}
+                        placeholder="Tên của bạn"
+                        value={name}
+                        onChangeText={setName}
                     />
                     <TextInput
                         style={styles.input}
@@ -56,24 +101,45 @@ const SignUpScreen = () => {
                         value={email}
                         onChangeText={setEmail}
                     />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Số điện thoại"
-                        value={phone}
-                        onChangeText={setPhone}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Mật khẩu"
-                        secureTextEntry
-                        value={password}
-                        onChangeText={setPassword}
-                    />
+                    <View style={styles.passwordContainer}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Mật khẩu"
+                            secureTextEntry={!showPassword}
+                            value={password}
+                            onChangeText={setPassword}
+                        />
+                        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                            <Image
+                                source={showPassword ? require('../assets/Icons/eye_open.png') : require('../assets/Icons/eye_close.png')}
+                                style={styles.eyeIcon}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.passwordContainer}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Xác nhận mật khẩu"
+                            secureTextEntry={!showConfirmPassword}
+                            value={confirmPassword}
+                            onChangeText={setConfirmPassword}
+                        />
+                        <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
+                            <Image
+                                source={showConfirmPassword ? require('../assets/Icons/eye_open.png') : require('../assets/Icons/eye_close.png')}
+                                style={styles.eyeIcon}
+                            />
+                        </TouchableOpacity>
+                    </View>
                     <Text style={styles.termsText}>
                         Để đăng ký tài khoản, bạn đồng ý với <Text style={styles.linkText}>Terms & Conditions</Text> và <Text style={styles.linkText}>Privacy Policy</Text>
                     </Text>
-                    <TouchableOpacity style={styles.button} onPress={onClick_SignUp}>
-                        <Text style={styles.buttonText}>Đăng Ký</Text>
+                    <TouchableOpacity style={styles.button} onPress={onClick_SignUp} disabled={loading}>
+                        {loading ? (
+                            <ActivityIndicator size="small" color="#fff" />
+                        ) : (
+                            <Text style={styles.buttonText}>Đăng Ký</Text>
+                        )}
                     </TouchableOpacity>
                     {/* line */}
                     <View style={styles.container_horizontal}>
@@ -81,7 +147,6 @@ const SignUpScreen = () => {
                         <Text>Hoặc</Text>
                         <Image style={styles.line_margin} source={require('../assets/Icons/Line.png')} />
                     </View>
-                    {/* icon gg + fb */}
                     <View style={styles.socialContainer}>
                         <TouchableOpacity>
                             <Image source={require('../assets/Icons/google.png')} style={styles.socialIcon_gg} />
@@ -90,7 +155,6 @@ const SignUpScreen = () => {
                             <Image source={require('../assets/Icons/facebook.png')} style={styles.socialIcon_fb} />
                         </TouchableOpacity>
                     </View>
-                    {/* đã có tài khoản */}
                     <View style={styles.text_horizontal}>
                         <Text>Bạn đã có tài khoản?</Text>
                         <Pressable onPress={goToLogin}>

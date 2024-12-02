@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f6f6f6',
-        padding: 20,
     },
     view_horizontal: {
         flexDirection: 'row',
@@ -36,12 +35,12 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         backgroundColor: 'transparent',
         color: '#333333',
-        marginLeft: 10, // Giữ khoảng cách cho icon tìm kiếm
+        marginLeft: 10,
     },
     search_view: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center', // Căn giữa
+        justifyContent: 'center',
         marginTop: 10,
     },
     search_icon: {

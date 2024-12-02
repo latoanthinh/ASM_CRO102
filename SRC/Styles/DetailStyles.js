@@ -6,7 +6,7 @@ const DetailStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginHorizontal: 20,
-        marginTop: 50,
+        marginTop: 20,
     },
     detail_header_back: {
         width: 30,
@@ -21,7 +21,6 @@ const DetailStyles = StyleSheet.create({
         height: 30,
     },
     detail_content: {
-        // marginHorizontal: 20,
         marginTop: 20,
     },
     detail_content_image_container: {

@@ -1,18 +1,25 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import styles from '../Styles/DetailStyles';
+import { useNavigation } from '@react-navigation/native';
 
 function Detail() {
     const [value, setValue] = useState(1);
     const [totalPrice, setTotalPrice] = useState(250000);
-
+    const navigation = useNavigation();
+    // xử lý chuyển trang
+    const goBackHome = () => {
+        navigation.navigate('Home');
+    };
 
 
     return (
         <ScrollView>
             <View style={styles.container}>
                 <View style={styles.detail_header}>
-                    <Image source={require('../assets/Icons/arrow_left.png')} style={styles.detail_header_back} />
+                    <Pressable onPress={goBackHome}>
+                        <Image source={require('../assets/Icons/arrow_left.png')} style={styles.detail_header_back} />
+                    </Pressable>
                     <Text style={styles.detail_header_text}>Spider plant</Text>
                     <Image source={require('../assets/Icons/shopping-cart.png')} style={styles.shopping_cart} />
                 </View>

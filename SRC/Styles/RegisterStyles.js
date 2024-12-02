@@ -107,6 +107,14 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         top: 20,
         left: 20
+    },
+    eyeIcon: {
+        width: 20,
+        height: 15,
+        position: 'absolute',
+        right: 20,
+        top: -47,
+        zIndex: 1,
     }
 });
 
