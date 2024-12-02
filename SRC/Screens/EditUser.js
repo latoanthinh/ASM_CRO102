@@ -1,13 +1,22 @@
-
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Pressable } from 'react-native';
 
 const ChinhSuaThongTin = () => {
     const navigation = useNavigation();
+    
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
+
     const goBack = () => {
         navigation.navigate('Home');
-    }
+    };
+
+    const isFormFilled = name && email && address && phone;
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -24,25 +33,29 @@ const ChinhSuaThongTin = () => {
                     <TextInput
                         style={styles.input}
                         placeholder="Tên"
-                        value="La Toàn Thịnh"
+                        value={name}
+                        onChangeText={setName}
                     />
                     <TextInput
                         style={styles.input}
                         placeholder="Email"
-                        value="toanthinh@gmail.com"
+                        value={email}
+                        onChangeText={setEmail}
                     />
                     <TextInput
                         style={styles.input}
                         placeholder="Địa chỉ"
-                        value="Đông Hưng Thuận, TP.HCM"
+                        value={address}
+                        onChangeText={setAddress}
                     />
                     <TextInput
                         style={styles.input}
                         placeholder="Số điện thoại"
-                        value="0397456543"
+                        value={phone}
+                        onChangeText={setPhone}
                     />
                 </View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={[styles.button, { backgroundColor: isFormFilled ? '#007BFF' : '#7D7B7B' }]}>
                     <Text style={styles.buttonText}>LƯU THÔNG TIN</Text>
                 </TouchableOpacity>
             </View>
@@ -67,7 +80,7 @@ const styles = StyleSheet.create({
         left: 10,
     },
     title: {
-        color: '#black',
+        color: 'black',
         fontSize: 18,
         fontWeight: 'bold',
     },
@@ -93,7 +106,6 @@ const styles = StyleSheet.create({
         marginVertical: 8,
     },
     button: {
-        backgroundColor: '#7D7B7B',
         paddingVertical: 12,
         alignItems: 'center',
         borderRadius: 4,
@@ -101,7 +113,7 @@ const styles = StyleSheet.create({
         bottom: 10,
         width: '90%',
         height: 50,
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     buttonText: {
         color: '#fff',
