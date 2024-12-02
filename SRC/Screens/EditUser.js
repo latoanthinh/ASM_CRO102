@@ -17,6 +17,7 @@ const ChinhSuaThongTin = () => {
                 <Text style={styles.title}>CHỈNH SỬA THÔNG TIN</Text>
             </View>
             <View style={styles.content}>
+                <Image style={styles.avt} source={require('../assets/Images/avt.jpg')} />
                 <Text style={styles.label}>Thông tin sẽ được lưu cho lần mua kế tiếp.</Text>
                 <Text style={styles.label}>Bấm vào thông tin để chỉnh sửa.</Text>
                 <View style={styles.inputContainer}>
@@ -107,6 +108,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
+    avt: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        borderColor: '#ced4da',
+        borderWidth: 1,
+        marginBottom: 16,
+        alignSelf: 'center',
+    }
 });
 
 export default ChinhSuaThongTin;

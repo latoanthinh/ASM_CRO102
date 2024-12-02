@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
     horizontal_container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 20,
-        padding: 10
+        alignItems: 'center',
+        padding: 10,
+        backgroundColor: "#fff"
     },
     text_planta: {
         fontSize: 24,
@@ -31,15 +32,7 @@ const styles = StyleSheet.create({
     },
     bg: {
         width: '100%',
-        height: 200,
-        position: 'absolute',
-        top: 100
-    },
-    container_green_text: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        padding: 10,
-        bottom: 40
+        height: 150,
     },
     text_green: {
         color: '#007537',
@@ -54,15 +47,13 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     text_1: {
-        marginTop: 80,
-        marginHorizontal: 10,
-        fontSize: 24,
+        fontSize: 16,
         fontWeight: '500',
         color: '#221f1f',
     },
     flatlist_styles: {
         padding: 10,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#fff',
         borderRadius: 10,
         height: 'auto',
     },
@@ -72,7 +63,6 @@ const styles = StyleSheet.create({
     },
     product_uudiem: {
         fontSize: 14,
-        marginTop: 5,
         color: '#888888'
     },
     product_price: {
@@ -87,6 +77,55 @@ const styles = StyleSheet.create({
         backgroundColor: '#f6f6f6',
         borderRadius: 16
     },
+    addToCartButton: {
+        backgroundColor: '#007537',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    addToCartButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+    productContainer: {
+        flex: 1,
+        alignItems: 'center',
+        marginVertical: 10,
+        paddingHorizontal: 5,
+    },
+    cartContainer: {
+        position: 'absolute',
+        top: 40,
+        right: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 
+    cartIcon: {
+        width: 20,
+        height: 20,
+    },
+
+    cartCount: {
+        position: 'absolute',
+        right: 0,
+        top: 10,
+        backgroundColor: 'red',
+        borderRadius: 10,
+        width: 10,
+        height: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 0.5,
+        borderColor: 'white',
+    },
+
+    cartCountText: {
+        color: 'white',
+        fontSize: 8,
+        fontWeight: 'bold',
+
+    },
 })
 export default styles;

@@ -55,7 +55,7 @@ const User = () => {
                     <Text style={styles.menuItemText}>Chỉnh sửa thông tin</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem}>
-                    <Text style={styles.menuItemText}>Cẩm nang trồng cây</Text>
+                    <Text style={styles.menuItemText}>Cẩm nang mua sắm</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem}>
                     <Text style={styles.menuItemText}>Lịch sử giao dịch</Text>

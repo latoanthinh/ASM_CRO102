@@ -1,12 +1,16 @@
 import { StyleSheet } from "react-native";
 
 const DetailStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+    },
     detail_header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginHorizontal: 20,
-        marginTop: 20,
+        marginTop: 10,
     },
     detail_header_back: {
         width: 30,
@@ -32,7 +36,6 @@ const DetailStyles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-
     detail_content_text_container: {
         marginVertical: 8,
     },
@@ -45,8 +48,8 @@ const DetailStyles = StyleSheet.create({
         fontSize: 16,
         width: 'auto',
         height: 30,
-        color: '#fff',
-        backgroundColor: '#009245',
+        color: 'black',
+        backgroundColor: '#fefefe',
         paddingHorizontal: 10,
         paddingVertical: 5,
         borderRadius: 10,
@@ -60,15 +63,10 @@ const DetailStyles = StyleSheet.create({
     detail_content_text_container_text_price: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#007537',
+        color: 'black',
     },
     detail_chitiettxt_container: {
         marginTop: 10,
-    },
-    detail_chitiettxt: {
-        fontSize: 19,
-        color: '#007537',
-        fontWeight: 'bold',
     },
     detail_line: {
         width: '100%',
@@ -86,13 +84,6 @@ const DetailStyles = StyleSheet.create({
         marginTop: 10,
         fontSize: 16,
         color: '#3A3A3A',
-        // fontWeight: 'bold',
-    },
-    detail_chitiettxtcongreen: {
-        marginTop: 10,
-        fontSize: 16,
-        color: '#009245',
-        // fontWeight: 'bold',
     },
     detail_chitiettxtcon_container: {
         flexDirection: 'row',
@@ -108,7 +99,6 @@ const DetailStyles = StyleSheet.create({
         marginHorizontal: 16,
     },
     detail_chonmua_text: {
-
         fontSize: 16,
         color: '#000000',
     },
@@ -117,7 +107,6 @@ const DetailStyles = StyleSheet.create({
         color: '#000000',
     },
     detail_soluong_container: {
-        // flexDirection: 'row',
         marginTop: 10,
         width: '40%',
     },
@@ -127,7 +116,6 @@ const DetailStyles = StyleSheet.create({
         marginHorizontal: 16,
     },
     button: {
-        // backgroundColor: '#007aff',
         paddingHorizontal: 7,
         paddingVertical: 2,
         borderRadius: 5,
@@ -163,7 +151,7 @@ const DetailStyles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 5,
         borderRadius: 5,
-        marginBottom: 10
+        marginBottom: 10,
     },
     detail_button_text: {
         fontSize: 18,
@@ -171,7 +159,38 @@ const DetailStyles = StyleSheet.create({
         marginTop: 10,
         fontWeight: 'bold',
         color: 'white',
-
+    },
+    size_selection_container: {
+        marginTop: 20,
+        marginHorizontal: 16,
+    },
+    size_selection_title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    size_buttons_container: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+    },
+    size_button: {
+        borderWidth: 1,
+        borderColor: '#007537',
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginRight: 10,
+    },
+    size_button_selected: {
+        backgroundColor: '#007537',
+    },
+    size_button_text: {
+        color: '#007537',
+        fontWeight: 'bold',
+    },
+    size_button_text_selected: {
+        color: 'white', 
+        fontWeight: 'bold',
     },
 });
 

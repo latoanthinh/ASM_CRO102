@@ -4,77 +4,78 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        padding: 20
+        padding: 20,
     },
     container_horizontal: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10,
         alignItems: 'center',
+        paddingVertical: 10,
     },
     image_arrow: {
         width: 24,
         height: 24,
+        tintColor: '#212121',
     },
-    tiltle: {
+    title: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginLeft: 10
+        color: '#212121',
     },
     cart_icon: {
         width: 24,
         height: 24,
         tintColor: '#212121',
-        marginLeft: 10
     },
     flatlist_container: {
         flex: 1,
         justifyContent: 'center',
         height: 40,
-        marginBottom: 20
+        marginBottom: 20,
+        paddingHorizontal: 5,
     },
-    text_tilte: {
-        fontSize: 14,
-        fontWeight: '400',
-        width: 'auto',
+    text_title: {
+        fontSize: 16,
+        fontWeight: '500',
         padding: 10,
-        height: 40,
         borderRadius: 10,
+        backgroundColor: '#f0f0f0',
+        textAlign: 'center',
     },
     focused: {
         backgroundColor: '#009245',
         borderRadius: 10,
-        width: 'auto',
-        height: 40,
     },
     focused_text: {
         color: '#fff',
     },
     flatlist_container_product: {
         width: 150,
-        height: 217,
+        height: 220,
         borderRadius: 10,
         justifyContent: 'center',
         marginLeft: 10,
-        alignContent: 'center',
-        marginBottom: 25
+        marginBottom: 25,
+        backgroundColor: '#fff',
+        elevation: 1, 
     },
     product_image: {
         backgroundColor: '#F6F6F6',
-        width: 155,
-        height: 134,
-        borderRadius: 8,
+        width: '100%',
+        height: 130,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
         overflow: 'hidden',
     },
     product_name: {
         fontSize: 14,
-        fontWeight: '400',
+        fontWeight: '600',
         color: '#212121',
-        marginTop: 10,
+        marginTop: 5,
     },
     product_uudiem: {
-        fontSize: 14,
-        marginTop: 5,
+        fontSize: 12,
+        marginTop: 2,
         color: '#888888',
     },
     product_price: {
@@ -84,4 +85,5 @@ const styles = StyleSheet.create({
         color: '#007537',
     },
 });
+
 export default styles;
