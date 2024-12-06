@@ -13,10 +13,10 @@ function Cart() {
     useEffect(() => {
         if (cartItem) {
             setCartItems(prevItems => {
-                const existingItem = prevItems.find(item => item.product.id === cartItem.product.id);
+                const existingItem = prevItems.find(item => item.product.id == cartItem.product.id);
                 if (existingItem) {
                     return prevItems.map(item =>
-                        item.product.id === existingItem.product.id
+                        item.product.id == existingItem.product.id
                             ? { ...item, quantity: item.quantity + cartItem.quantity }
                             : item
                     );
@@ -93,7 +93,7 @@ function Cart() {
 
             <TouchableOpacity 
                 style={styles.checkoutButton} 
-                onPress={() => navigation.navigate('Payment', { cartItems })}
+                onPress={() => navigation.navigate('Payment', { cartItems })} // Chuyển cartItems đến Payment
             >
                 <Text style={styles.checkoutButtonText}>Tiến hành thanh toán</Text>
             </TouchableOpacity>

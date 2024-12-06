@@ -23,11 +23,11 @@ const Search_Screen = () => {
     );
 
     const handleDelete = (id) => {
-        setRecentSearches(prevSearches => prevSearches.filter(item => item.id !== id));
+        setRecentSearches(prevSearches => prevSearches.filter(item => item.id != id));
     };
 
     const handleAddSearch = (item) => {
-        if (item && !recentSearches.some(search => search.id === item.id)) {
+        if (item && !recentSearches.some(search => search.id == item.id)) {
             setRecentSearches(prevSearches => [...prevSearches, item]);
         }
     };

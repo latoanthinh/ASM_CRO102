@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const loginUser = createAsyncThunk('user/login', async ({ email, password }) => {
-    const response = await axios.post('http://192.168.1.17:8888/users/login', {
+    const response = await axios.post('http://172.16.66.206:8888/users/login', {
         email,
         password,
     });
@@ -16,7 +16,7 @@ export const loginUser = createAsyncThunk('user/login', async ({ email, password
 });
 
 export const registerUser = createAsyncThunk('user/register', async ({ name, email, password, confirm_password }) => {
-    const response = await axios.post('http://192.168.1.17:8888/users/register', {
+    const response = await axios.post('http://172.16.66.206:8888/users/register', {
         name,
         email,
         password,

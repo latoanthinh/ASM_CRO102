@@ -30,7 +30,7 @@ function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
           <Stack.Screen name='Welcome' component={Welcome} />
           <Stack.Screen name="Login" component={Login_Screen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />

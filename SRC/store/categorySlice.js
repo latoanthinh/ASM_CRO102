@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategories', async () => {
-    const response = await axios.get('http://192.168.1.17:8888/category/get_categories');
+    const response = await axios.get('http://172.16.66.206:8888/category/get_categories');
     return response.data.data;
 });
 

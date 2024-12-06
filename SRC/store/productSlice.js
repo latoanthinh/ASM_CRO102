@@ -3,20 +3,20 @@ import axios from 'axios';
 
 // Fetch all products
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const response = await axios.get('http://192.168.1.17:8888/product/get_product');
+    const response = await axios.get('http://172.16.66.206:8888/product/get_product');
     return response.data;
 });
 
 // Fetch products by category
 export const fetchProductsByCategory = createAsyncThunk('products/fetchProductsByCategory', async (categoryName) => {
-    const response = await axios.get(`http://192.168.1.17:8888/product/get_product_by_category/${categoryName}`);
-    return response.data; 
+    const response = await axios.get(`http://172.16.66.206:8888/product/get_product_by_category/${categoryName}`);
+    return response.data;
 });
 
 // Search products by name
 export const searchProductsByName = createAsyncThunk('products/searchProductsByName', async (productName) => {
-    const response = await axios.get(`http://192.168.1.17:8888/product/get_product_by_name/${productName}`); // Đường dẫn đã sửa
-    return response.data; 
+    const response = await axios.get(`http://172.16.66.206:8888/product/get_product_by_name/${productName}`);
+    return response.data;
 });
 
 const productSlice = createSlice({

@@ -6,13 +6,18 @@ import { hmacSHA256 } from 'react-native-hmac';
 
 const Payment = ({ route, navigation }) => {
     const { cartItems } = route.params;
-    const [paymentLink, setPaymentLink] = useState(null);
+    const [paymentLink, setPaymentLink] = useState('');
     const clientID = 'f41492cb-7845-4b64-8e22-f47c1cdf662a';
     const apiKey = 'd77bf32d-cdde-491f-b525-04dd24e62b0c';
     const checkSum = 'ea3c2f08fcef19c9e4f0f9266401097f99c199132aeaa4e9d2697659526dc94e';
 
     const createPaymentLink = async () => {
-        const amount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+        const amount = cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
+        if (amount <= 0) {
+            Alert.alert('Lỗi', 'Giá trị thanh toán không hợp lệ');
+            return;
+        }
+
         const cancelUrl = 'https://localhost:3000/cancel';
         const description = `Thanh Toán: ${amount}`;
         const orderCode = Date.now();
@@ -32,6 +37,8 @@ const Payment = ({ route, navigation }) => {
             signature,
         };
 
+        console.log('Request body:', body);
+
         try {
             const response = await axios.post('https://api-merchant.payos.vn/v2/payment-requests', body, {
                 headers: {
@@ -39,18 +46,21 @@ const Payment = ({ route, navigation }) => {
                     'x-api-key': apiKey,
                 },
             });
+            console.log('Response:', response.data);
+
             if (response.data.code == 0) {
                 setPaymentLink(response.data.data.checkoutUrl);
             } else {
                 Alert.alert('Lỗi', 'Không thể tạo link thanh toán');
             }
         } catch (error) {
-            console.log(error);
+            console.log('Error response:', error.response);
             Alert.alert('Lỗi', 'Có lỗi xảy ra trong quá trình thanh toán');
         }
     };
 
     useEffect(() => {
+        createPaymentLink();
     }, []);
 
     const handleNavigationChange = (navState) => {
@@ -69,10 +79,7 @@ const Payment = ({ route, navigation }) => {
         <ScrollView>
             <View style={styles.container}>
                 <Text style={styles.headerText}>Thông tin thanh toán</Text>
-                <TouchableOpacity style={styles.checkoutButton} onPress={createPaymentLink}>
-                    <Text style={styles.checkoutButtonText}>Tạo thanh toán</Text>
-                </TouchableOpacity>
-                {paymentLink && (
+                {paymentLink ? (
                     <WebView
                         source={{ uri: paymentLink }}
                         style={styles.webView}
@@ -80,6 +87,10 @@ const Payment = ({ route, navigation }) => {
                         domStorageEnabled={true}
                         onNavigationStateChange={handleNavigationChange}
                     />
+                ) : (
+                    <TouchableOpacity style={styles.checkoutButton} onPress={createPaymentLink}>
+                        <Text style={styles.checkoutButtonText}>Tạo thanh toán</Text>
+                    </TouchableOpacity>
                 )}
             </View>
         </ScrollView>
@@ -97,30 +108,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 16,
         textAlign: 'center',
-    },
-    scrollView: {
-        flex: 1,
-        paddingHorizontal: 16,
-        marginBottom: 16,
-        marginBottom: 20,
-    },
-    itemContainer: {
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        padding: 16,
-        marginBottom: 12,
-    },
-    productName: {
-        fontSize: 18,
-        fontWeight: '600',
-    },
-    productPrice: {
-        fontSize: 16,
-        color: '#ff5722',
-    },
-    productQuantity: {
-        fontSize: 14,
-        color: '#666',
     },
     checkoutButton: {
         backgroundColor: '#4CAF50',
